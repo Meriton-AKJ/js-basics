@@ -18,57 +18,47 @@ const global = 'je suis globale';
 
 function testScope(){
     const local = 'je suis locale';
-    console.log(global);
-    console.log(local);
+    return[ global, local ];
 }
 
 //4
-let bankAccount = {
-    balance =  1000,
-    deposit = function(){
-        this.balance +=100;
-    }
+const bankAccount = {
+    balance: 1000,
 
-    withdraw = function(){
-        this.balance -=100;
-    }
+    deposit: function(amount){
+        this.balance += amount;
+    },
+
+    withdraw: function(amount){
+        this.balance -= amount;
+}
 }
 
 /* Fonctions */
 //1.1
-function greet(){
-    name = ['name'];
-    console.log('Hello ' + name);
+function  greet(name){
+    return 'Hello' + ',' + name + '!';
 }
 
 //1.2
-function calculateArea (){
-    width = 5;
-    height = 10;
-    return width * height; // A = L * l
+function cakculateArea (width, height){
+    return  width * height ;
 }
 
 //1.3
-function isEven (){
-    number = 4;
-    if (number % 2 === 0){ 
+function isEven (number){
+    if (number % 2 === 0){
         return true;
-    }
-    else {
+    } else {
         return false;
     }
 }
 
-//2.1
-function createUser(){
-    name = '';
-    age = 18;
-    isActive = true;
-
-    if (!name)
-         throw new Error("Le paramètre 'name' est obligatoire !");
-
-//2.2
+//2
+function createUser (name, age = 18, isActive = true){
+    if (name === ''){
+        throw new Error('Name is required');
+    }
     return {
         name: name,
         age: age,
@@ -76,106 +66,78 @@ function createUser(){
     };
 }
 
-//3.1
-const globalVar = 'global';
+//3
+const globalVar = "global";
 
-//3.2
-function testScope(){
-    const localVar = 'local';
+function testScope (){
+    const localVar = "local";
     console.log(globalVar);
     console.log(localVar);
-
-//3.3
-    return globalVar, localVar;
 }
 
-//4.1
-function add(a, b){
-    return a + b;
-}
-//4.2
-function multiply(a, b){
-    return a * b;
+//4
+function add (a, b){
+    return  a + b ;
 }
 
-//4.3
-function getFullName(firstName, lastName){
-    return firstName + ' ' + lastName;
+function miltiply (a, b){
+    return a * b ;
 }
+
+function getFullName (firstName, lastName){
+    return  firstName + ' ' + lastName ;
+}
+
 
 /* Operateurs */
 
 //1
 function calculate (a, b){
-    return [
-        a + b,
-        a - b,
-        a * b,
-        a / b,
-        a % b,
-    ]
+    return {
+        sum: a + b,
+        difference: a - b,
+        product: a * b,
+        quotient: a / b,
+        reste: a % b
+    }
 }
 
 //2
 function compareNumbers (a, b){
-    if (a > b){
-        return true;
-    }
-    else if (a < b){
-        return true;
-    }
-    else if (a == b){
-        return true;
-    }
-    else if (a === b){
-        return true;
+    return {
+        isBigger: a > b,
+        isSmaller: a < b,
+        isEqual: a == b,
+        isTricklyEqual: a === b
     }
 }
 
 //3
-
-//3.1
-function checkAge(age){
-    if (18 <= age >= 65){
+function checkAge (age){
+    if ( age >= 18 && age <= 65 ){
         return true;
-    }
-    else {
+    } else {
         return false;
     }
 }
 
-//3.2
-function isValidUser(){
-    age = int;
-    hasValidEmail = true;
-    isActive = 
-    if (age >= 18 && hasValidEmail && isActive){
-        return true;
-    }
+function isValidUser (user){
+    return user.age >= 18 && user.hasValidEmail && user.isActive;
 }
 
 //4
-
-//4.1
-
-function updateCounter(nombre){
-//4.1.1
-    let = nombre = 0;
-    
-//4.1.2
-    nombre += 1;
-
-//4.1.3
-    nombre = nombre * 2;
-
-//4.1.4
-    return nombre;
+function updateCounter (number){
+    const resultat = ( number + 1 ) * 2;
+    return resultat;
 }
 
-//4.2
-/*function calculateTotal(){
-
-}*/
+function calculateTotal (prices){
+    let total = 0;
+    for (let price of prices){
+        total += price * 1.2;
+    }
+    return total;
+}
 
 /* Boucles */
 
