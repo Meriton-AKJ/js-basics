@@ -217,3 +217,30 @@ const average = sum / numbersAverage.length;
 console.log('Moyenne = ', average);
 
 //4.1
+const findElementInArray = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ];
+const element = 5;
+
+for ( let i = 0; i < findElementInArray.length; i++ ){
+    if ( findElementInArray[i] === element );
+    console.log('Element found:', findElementInArray[i]);
+    break;
+}
+
+//4.2
+const arrayOfNumbers = [ -5, 3, -2, 8, -1, 4 ];
+
+for ( let i = 0; i < arrayOfNumbers.length; i++ ){
+    if ( arrayOfNumbers[i] < 0 ) continue;
+    console.log( arrayOfNumbers[i] );
+}
+
+//4.3
+const listOfContacts = ['Alice', 'Bob', 'Charlie', 'Meriton'];
+const searchContact = 'Meriton';
+
+for ( let i = 0; i < listOfContacts.length; i++ ){
+    if ( listOfContacts[i] === searchContact ){
+        console.log('Contact found:', listOfContacts[i]);
+        break;
+    }
+}
