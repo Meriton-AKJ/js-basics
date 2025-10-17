@@ -10,15 +10,13 @@ const user2 = createUser('Bob', 25, 'bob@exemple.com');
 
 //1.2
 function updateUser (user, email = '', age = null, name =''){
-    
-}{
-    const user = {
-        name: 'Alice',
-        age: 30,
-        email: ''
-    };
+    if (email) user.email = email;
+    if (age) user.age = age;
+    if (name) user.name = name;
     return user;
 }
+
+const user3 = updateUser(user1, 'charlie@exemple.com', null , 'Charlie');
 
 //1.3
 function getUserInfo (){
