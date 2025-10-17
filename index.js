@@ -244,3 +244,160 @@ for ( let i = 0; i < listOfContacts.length; i++ ){
         break;
     }
 }
+
+/* Conditions */
+
+//1.1
+function checkAge (age){
+    if ( age >= 18 ){
+        return 'majeur';
+    } else {
+        return 'mineur';
+    }
+}
+
+//1.2
+function getGrade (note){
+    if ( note >= 16 ){
+        return 'A';
+    } else if ( note >= 14 ){
+        return 'B';
+    } else if ( note >= 12 ){
+        return 'C';
+    } else if ( note >= 10 ){
+        return 'D';
+    } else {
+        return 'E';
+    }
+}
+
+//1.3
+function isLeapYear (year){
+    if ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)){
+        return true;
+    } else {
+        return false;
+    }
+}
+
+//2.1
+function getDayName (dayNumber){
+    switch (dayNumber){
+        case 1:
+            return 'Lundi';
+        case 2:
+            return 'Mardi';
+        case 3:
+            return 'Mercredi';
+        case 4:
+            return 'Jeudi';
+        case 5:
+            return 'Vendredi';
+        case 6:
+            return 'Samedi';
+        case 7:
+            return 'Dimanche';
+        default:
+            return 'Numéro de jour invalide';
+    }       
+}
+
+//2.2
+function getSeason(month) {
+  switch (month) {
+    case 12:
+    case 1:
+    case 2:
+      return 'Hiver';
+    case 3:
+    case 4:
+    case 5:
+      return 'Printemps';
+    case 6:
+    case 7:
+    case 8:
+      return 'Été';
+    case 9:
+    case 10:
+    case 11:
+      return 'Automne';
+    default:
+      return 'Mois invalide';
+  }
+}
+
+
+//2.3
+function calculate(a, b, operation) {
+  switch (operation) {
+    case '+':
+      return a + b;
+    case '-':
+      return a - b;
+    case '*':
+      return a * b;
+    case '/':
+      return a / b;
+    default:
+      return 'Opération invalide';
+  }
+}
+
+
+//3.1
+function isValidUser (age, email){
+    if ( age >= 18 && email.includes ('@') ){
+        return true;
+    } else {
+        return false
+    }
+}
+
+//3.2
+function canVote (age, nationality, statut){
+    if ( age >= 18 && nationality === 'belge' && statut === true ){
+        return true;
+    } else {
+        return false;
+    }
+}
+
+//3.3
+function isValidPassword (mdp,){
+    const hasMinLength = mdp.length > 8;
+    const hasUpperCase = /[A-Z]/.test(mdp);
+    const hasNumber = /[0-9]/.test(mdp);
+
+    return hasMinLength && hasUpperCase && hasNumber;
+} 
+
+//4.1
+function getDiscount (amount){
+    if ( amount > 100 ){
+        return (amount * 0.1);
+    } else {
+        return 0;
+    }  
+}
+
+//4.2
+function formatMessage (message, maxLengthMessage){
+    if ( message.length <= maxLengthMessage ){
+        return message;
+    } else {
+        return message.slice(0, maxLengthMessage) + '...';
+    }
+}
+
+//4.3
+function getStatus(code) {
+    if (code >= 200 && code < 300) {
+        return 'success';
+    } else if (code >= 300 && code < 400) {
+        return 'redirect';
+    } else if (code >= 400 && code < 600) {
+        return 'error';
+    } else {
+        return 'unknown'; // optionnel si code non prévu
+    }
+}
