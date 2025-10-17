@@ -142,46 +142,57 @@ function calculateTotal (prices){
 /* Boucles */
 
 //1.1
-for (let i = 1; i < 10; i++){
+let result = [];
+for( let i = 1; i <= 10; i++ ){
+    result.push(i);
+}
+
+console.log(result);
+
+//1.2
+for (let i = 0; i <= 20; i += 2){
     console.log(i);
 }
 
-//1.2
-for (let i = 0; i <= 20; i++){
-    if (i % 2 === 0){
+//1.3
+function factorial(n){
+    let resultat = 1;
+
+    for (let i = 1; i <= n; i++){
+        resultat *= i;
+    }
+
+    return resultat;
+}
+
+//2.1
+function countDown(){
+    let i = 10;
+    
+    while ( i >= 10 ){
         console.log(i);
+        i--;
     }
 }
 
-//1.3
-// pas compris la consigne
-
-
-//2.1
-let x = 0;
-
-while ( x > 10){
-    x--;
-    console.log(x);
-}
-
 //2.2
-let n = 1;
-while (true){
-    if (n % 7 === 0){
-        console.log(n);
-        break;
+function firstNumberDivisibleBy7 (numbers){
+    let i = 0;
+
+    while ( i < numbers.length ){
+        if ( numbers[i] % 7 === 0){
+            return numbers[i];
+        }
     }
 }
 
 //2.3
-// pas reussi a faire
+// demander au prof
 
 
 //3.1
-const fruits = ['pomme', 'banane', 'orange'];
-
-for (const fruit of fruits){
+function fruitsArray (fruits){
+    for ( let fruit of fruits)
     console.log(fruit);
 }
 
