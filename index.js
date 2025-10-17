@@ -191,26 +191,29 @@ function firstNumberDivisibleBy7 (numbers){
 
 
 //3.1
-function fruitsArray (fruits){
-    for ( let fruit of fruits)
+const fruits = ['apple', 'banana', 'orange'];
+
+for ( const fruit of fruits ){
     console.log(fruit);
 }
 
 //3.2
-const user = {
-    name: 'Meriton';
-    age: 24;
+const userForIn = {
+    name: 'Alice',
+    age: 35,
 }
 
-for (const key in user){
-    console.log(key + ': ' + user[key]);
+for ( const key in userForIn ){
+    console.log( key + ': ' + userForIn[key] );
 }
 
 //3.3
-const note = [ '12', '15', '18', '20'];
-
-for (const moyenne of note){
-    console.log(moyenne);
+const numbersAverage = [10, 15, 20, 5, 3];
+let sum = 0;
+for ( const number of numbersAverage ){
+    sum += number;
 }
+const average = sum / numbersAverage.length;
+console.log('Moyenne = ', average);
 
 //4.1
