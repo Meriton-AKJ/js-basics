@@ -19,11 +19,11 @@ function updateUser (user, email = '', age = null, name =''){
 const user3 = updateUser(user1, 'charlie@exemple.com', null , 'Charlie');
 
 //1.3
-function getUserInfo (){
-    const user = {
-        resultat: user.name + ' ' + user.age + ' ' + user.email
-    }
+function getUserInfo (user){
+         return user.name + ' - ' + user.age + ' ans - ' + user.email;
 }
+
+const user4 = getUserInfo('Meriton', 25, 'meriton@exemple.com');
 
 //2
 
@@ -45,14 +45,15 @@ function createBankAccount () {
 
     }
     
+    return bankAccount;
 }
 
 //2.2
 function createCar (){
     const car = {
-        brand: '',
-        model: '',
-        year: 2020,
+        brand: brand,
+        model: model,
+        year: year,
         start: function(){
             return "Vroum vroum!";
         },
@@ -61,4 +62,7 @@ function createCar (){
             return currentYear - this.year;
         }
     }
+
+    return car;
 }
+
