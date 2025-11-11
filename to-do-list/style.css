@@ -1,0 +1,80 @@
+:root {
+  --primary-color: #bac51a;
+  --secondary-color: #777777;
+  --font-color: #333;
+  --background-color: #f4f4f4;
+  --border-radius: 5px;
+  --border-color: #c0c0c0;
+  --hover-btn-background-color: #e1ee34;
+}
+
+body {
+  position: relative;
+  width: 1360px;
+  margin: 0 auto;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--background-color);
+  color: var(--font-color);
+}
+
+h1 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+button {
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: white;
+  transition: transform ease 0.9s;
+  border-radius: var(--border-radius);
+}
+
+button:hover{
+  background-color: var(--hover-btn-background-color);
+  box-shadow: 0px 5px 6px 2px rgb(206, 205, 205);
+  transform: scale(1.05);
+}
+
+input[type="text"] {
+  padding: 10px;
+  width: 300px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+}
+
+.actions {
+  text-align: center;
+}
+
+.todo-item {
+  width: 400px;
+  margin: 20px auto;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+}
+
+.todo-actions {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  width: 30%;
+  margin-right: 20px;
+}
+
+span{
+  padding: 10px;
+  cursor: pointer;
+}
+
+.done {
+  background-color: green; 
+  color: white;
+}

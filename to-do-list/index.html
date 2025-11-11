@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="todo-app">
+        <h1>Todo List</h1>
+
+        <div class="actions">
+            <input type="text" id="new-todo" placeholder="What needs to be done?">
+            <button id="add-todo">Add Todo</button>
+        </div>
+
+        <div id="todo-list"></div>
+    </div>
+
+    <script>
+
+        // Get DOM elements
+        const addButton = document.getElementById('add-todo');
+        const newTodoInput = document.getElementById('new-todo');
+        const todoList = document.getElementById('todo-list');
+
+        /**
+         * Initialize the application: 
+         * - Load tasks from LocalStorage
+         * - Add event listeners to the input and button
+         */
+        const init = () => {
+            const todos = JSON.parse(localStorage.getItem('todos')) || [];
+
+            if (todos.length) {
+                todos.forEach((todo) => buildTaskDOM(todo.label, todo.done));
+            }
+
+            addButton.addEventListener('click', addTodoHandler);
+            newTodoInput.addEventListener('keydown', addTodoHandler);
+
+
+        };
+
+        const updateLocalStorage = () => {
+            const todos = [];
+            document.querySelectorAll('.todo-item').forEach((item) => {
+                const label = item.querySelector('span').textContent;
+                const done = item.querySelector('span').classList.contains('done');
+                todos.push({ label, done });
+            });
+            localStorage.setItem('todos', JSON.stringify(todos));
+        }
+
+
+        /**
+         * Build the DOM structure for a task and add it to the list
+         * 
+         * @param label - The label of the task
+         * 
+         * @returns The task container element
+         */
+        const buildTaskDOM = (label, done = false) => {
+            const taskContainer = document.createElement('div');
+            taskContainer.setAttribute('class', 'todo-item');
+
+            //création du span qui affiche le texte de la tâche
+            const span = document.createElement('span');
+            span.textContent = label;
+
+            if (done) { // si la tâche est déjà marquée comme terminée
+                span.classList.add('done'); // on remet la classe au chargement
+            }
+
+            // creation du conteneur des boutons Done et Delete
+            const actions = document.createElement('div');
+            actions.setAttribute('class', 'todo-actions');
+
+            // creation boutons Done et Delete
+            const checkButton = document.createElement('button');
+            checkButton.textContent = 'Done';
+
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+
+            //dynamise le btn delete 
+            deleteButton.addEventListener('click', () => {
+                taskContainer.remove(); //supprime la tache
+                updateLocalStorage(); // met a jour le localStorage apres le changement
+            });
+
+            //dynamise le btn done
+            checkButton.addEventListener('click', () => {
+                span.classList.toggle('done'); // ajoute/enlève la classe done
+                updateLocalStorage();
+            });
+
+            // assemblage DOM
+            actions.appendChild(checkButton);
+            actions.appendChild(deleteButton);
+
+            taskContainer.appendChild(span);
+            taskContainer.appendChild(actions);
+
+            todoList.appendChild(taskContainer);
+
+        };
+
+        /**
+         * Handle the addition of a new task
+         * 
+         * @param event - The event object
+         */
+        const addTodoHandler = (event) => {
+            if (event.type === 'keydown' && event.key !== 'Enter') {
+                return;
+            }
+
+            if (newTodoInput.value === '') {
+                return;
+            }
+
+            buildTaskDOM(newTodoInput.value);
+
+            if (window.localStorage) {
+                const todos = JSON.parse(localStorage.getItem('todos')) || [];
+                todos.push({ label: newTodoInput.value, done: false });
+                localStorage.setItem('todos', JSON.stringify(todos));
+            }
+
+            newTodoInput.value = '';
+        };
+
+        init();
+    </script>
+</body>
+
+</html>
