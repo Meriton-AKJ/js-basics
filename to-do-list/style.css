@@ -2,7 +2,7 @@
   --primary-color: #bac51a;
   --secondary-color: #777777;
   --font-color: #333;
-  --background-color: #f4f4f4;
+  --background-color: #ccff0050;
   --border-radius: 5px;
   --border-color: #c0c0c0;
   --hover-btn-background-color: #e1ee34;
@@ -16,6 +16,14 @@ body {
   font-family: Arial, sans-serif;
   background-color: var(--background-color);
   color: var(--font-color);
+}
+
+.todo-app{
+  background-color: #fff;
+  padding: 5rem 10rem;
+  margin: 2rem;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: var(--border-radius);
 }
 
 h1 {
