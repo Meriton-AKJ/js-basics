@@ -46,15 +46,18 @@
         };
 
         const updateLocalStorage = () => {
-            const todos = [];
-            document.querySelectorAll('.todo-item').forEach((item) => {
-                const label = item.querySelector('span').textContent;
-                const done = item.querySelector('span').classList.contains('done');
-                todos.push({ label, done });
+
+            const todos = [];  // On crée un tableau vide qui va contenir toutes les tâches mises à jour
+
+            document.querySelectorAll('.todo-item').forEach((item) => { // On sélectionne toutes les tâches affichées dans la page
+                const label = item.querySelector('span').textContent; // Récupère le texte de la tâche (contenu du <span>)
+                const done = item.querySelector('span').classList.contains('done'); // Vérifie si la tâche possède la classe "done" = si elle est terminée
+                todos.push({ label, done }); // Ajoute la tâche dans le tableau sous la forme d'un objet
             });
+
             localStorage.setItem('todos', JSON.stringify(todos));
         }
-        
+
         /**
          * Build the DOM structure for a task and add it to the list
          * 
@@ -71,7 +74,7 @@
             span.textContent = label;
 
             if (done) { // si la tâche est déjà marquée comme terminée
-                span.classList.add('done'); // on remet la classe au chargement
+                span.classList.add('done'); // on remet la classe au chargement - permet d'afficher la tâche stylée comme terminée
             }
 
             // creation du conteneur des boutons Done et Delete
@@ -94,7 +97,7 @@
             //dynamise le btn done
             checkButton.addEventListener('click', () => {
                 span.classList.toggle('done'); // ajoute/enlève la classe done
-                updateLocalStorage();
+                updateLocalStorage(); //met a jour le localStorage apres le changement
             });
 
             // assemblage DOM
