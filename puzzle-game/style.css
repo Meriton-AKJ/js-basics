@@ -207,3 +207,18 @@ footer a:hover {
   padding: 0.2em;
   background: var(--tertiary-color);
 }
+
+.card{
+    width: 75px; /* width et height a 100px pour faire un carré */
+    height: 75px;
+    margin: 5px;
+    position: relative;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    background-color: var(--quaternary-color);
+}
